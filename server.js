@@ -16,7 +16,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${3001}`,
+                url: `https://node-express-starter.vercel.app`,
             },
         ],
    components: {
