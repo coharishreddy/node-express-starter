@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const jsonwebtoken = require("jsonwebtoken");
+
+const JWT_SECRET = "R@ndomSecreT";
 
 /**
     * @swagger
-    * /basic-auth:
+    * /token-based-auth:
     *   post:
-    *     summary: Basic auth login
+    *     summary: Token based auth login
     *     requestBody:
     *       required: true
     *       content:
@@ -24,16 +27,24 @@ router.post("/", (req, res) => {
     console.log(`${username} is trying to login ..`);
   
     if (username === "admin" && password === "admin") {
-      return res.json({
-            status: 200,
-            message: 'User Logged In!'
-            // token: jsonwebtoken.sign({ user: "admin" }, JWT_SECRET),
-      });
+
+        const tokenPayload = {
+            name: username,
+        };
+        const accessToken = jsonwebtoken.sign(tokenPayload, JWT_SECRET);
+        return res.status(201).json({
+            status: 'success',
+            message: 'User Logged In!',
+            data: {
+                accessToken,
+            },
+        });
     }
   
     return res
       .status(401)
-      .json({ message: "The username and password you provided are invalid" });
+      .json({ message: "The username and password your provided are invalid" });
 });
+
 
 module.exports = router;
