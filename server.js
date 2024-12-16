@@ -29,19 +29,19 @@ const swaggerOptions = {
      },
  },
     },
-    apis: ['./routes/*.js'], // Path to your API docs
+    apis: ['./*.js'], // Path to your API docs
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-const healthRoutes = require('./routes/health');
-const basicAuthRoutes = require('./routes/basic-auth');
-const tokenBasedAuthRoutes = require('./routes/token-based-auth');
-const profileAuthRoutes = require('./routes/profile');
-const publicAuthRoutes = require('./routes/public');
-const protectedAuthRoutes = require('./routes/protected');
+const healthRoutes = require('./health');
+const basicAuthRoutes = require('./basic-auth');
+const tokenBasedAuthRoutes = require('./token-based-auth');
+const profileAuthRoutes = require('./profile');
+const publicAuthRoutes = require('./public');
+const protectedAuthRoutes = require('./protected');
 
 
 app.use('/health', healthRoutes);
