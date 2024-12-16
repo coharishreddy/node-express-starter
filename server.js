@@ -11,9 +11,9 @@ const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {
-            title: 'My API',
+            title: 'Full Stack - Auth',
             version: '1.0.0',
-            description: 'API documentation using Swagger',
+            description: 'API documentation for Auth',
         },
         servers: [
             {
